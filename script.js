@@ -3,9 +3,11 @@ const taskForm = document.getElementById("taskForm");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("devtrackTasks")) || [];
 
 function updateStats() {
+    localStorage.setItem("devtrackTasks", JSON.stringify(tasks));
+    
     const total = tasks.length;
 
     const completed = tasks.filter(
